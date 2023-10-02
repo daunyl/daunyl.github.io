@@ -81,7 +81,22 @@
 	};
 
 	onePageClick();
-	
+
+	var onePageClick2 = function(classname) {
+		$(document).on('click', classname + ' a[href^="#"]', function(event) {
+			event.preventDefault();
+
+			var href = $.attr(this, 'href');
+
+			$('html, body').animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - 70
+			}, 600, function() {
+				// window.location.hash = href;
+			});
+		});
+	};
+
+	onePageClick2('.smoothed-scroll');
 
 	var carousel = function() {
 		$('.home-slider').owlCarousel({
